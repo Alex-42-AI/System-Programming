@@ -1,6 +1,6 @@
-Да се напише програма на C, която игнорира сигнала SIGPIPE. Създава канал, затваря дескриптора му за четене и пише в него. След това пише на стандартния изход. Какъв е резултата?
-Да се напише програма на C, която обработва сигнала SIGPIPE с подходяща функция. Създава канал, затваря дескриптора му за четене и пише в него. След това пише на стандартния изход. Какъв е резултата?
-Да се напише програма на C, която поражда процес. Без да ползва функцията wait(), изчаква завършването му и извежда подходящо съобщение.
-Да се напише програма на C, която постоянно увеличава брояч и през една секунда извежда стойността му на екрана. (без използване на sleep())
-Да се напише програма на C, която постоянно увеличава брояч, през една секунда извежда стойността му на екрана, а при натискане на Ctrl+C го нулира и продължава.
-Да се напише програма на C, която поражда процес. Сина обработва сигнала SIGTERM, като извежда подходящо съобщение. Бащата изпраща 2 пъти през 1 секунда сигнала SIGTERM на сина си. Какъв е резултата?
+Write a C program, that ignores the SIGPIPE signal. It creates a pipe, closes its read descriptor and writes in it. It then writes on the standard output. What's the result?
+Write a C program, that processes the SIGPIPE signal with an appropriate function. It creates a pipe, closes its reading descriptor and writes in it. It then writes on the standard output. What's the result?
+Write a C program, that starts a process. Without using the wait() function, it waits for it to finish and outputs an appropriate message.
+Write a C program, that constantly increases a counter and every second it prints it out (without using sleep()).
+Write a C program, that constantly increases a counter, every second it prints it out and if Ctrl+C is presses, it resets it and continues.
+Write a C program, that starts a process. The descendant processes the SIGTERM signal and outputs an appropriate message. The parent sends twice, every second, the SIGTERM signal to its descendant. What's the result?
