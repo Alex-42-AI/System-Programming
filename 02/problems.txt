@@ -1,6 +1,6 @@
-Да се напишат 2 програми на C, които:
-отваря два пъти файл за четене, алтернативно чете от двата дескриптора и извежда прочетеното на стандартния изход.
-отваря файл за четене, дублира дескриптора, алтернативно чете няколко пъти от двата дескриптора и извежда прочетеното на стандартния изход. Затваря оригиналния дескриптор и продължава да чете от дублирания.
-Има ли разлика в резултата от изпълнението на двете програми? Ако да, каква и защо?
-Да се напише програма на C, която отваря файл за писане, затваря стандартния изход, дублира дескриптора на отворения файл и пише на стандартния изход. Какъв е резултата?
-Да се напише програма на C, която получава списък с имена на файлове в командния ред и извежда по подходящ начин stat информацията за всеки от тях.
+Write 2 C programs, where:
+The first one opens twice a file for reading, alternatively reads from both descriptors and outputs the result on the standard output.
+The second one opens a file for reading, duplicates the descriptor, alternatively reads several times from both descriptors and outputs the result on the standard output. It closes the original descriptor and continues reading from the duplicated one.
+Is there a difference in the execution of both programs? If so, what is it and why?
+Write a C program, that opens a file for writing, closes the standard output, duplicates the descriptor of the opened file and writes on the standard output. What's the result?
+Write a C program, that receives a list of file names in the command line and outputs appropriately the stat information for each of them.
