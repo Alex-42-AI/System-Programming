@@ -1,4 +1,4 @@
 Write a C program, that creates a shared memory segment, writes text in it, then reads it, prints it out and destroys the segment.
 Write a C program, that creates a shared memory segment and writes text in it. Another program joins the same segment, reads the text, prints it out and destroys the segment.
 Write a C program, that creates a shared memory segment of size int, initializes it with 0 and starts a process. Both processes simoltaneously, through different time intervals, increase the number, until it gets to 100 and print out their own pid and the new value.
-*Write a C program, that creates a shared memory segment of size itn[20], initialized with random numbers (random()) from 0 to 99 and starts a process. 1 of them starts sorting the numbers (any sorting algorithm) while the other one prints out the content of the array.
+*Write a C program, that creates a shared memory segment of size int[20], initialized with random numbers (random()) from 0 to 99 and starts a process. 1 of them starts sorting the numbers (any sorting algorithm) while the other one prints out the content of the array.
