@@ -1,0 +1,70 @@
+Обработка на грешки
+#include <stdio.h>
+void perror(const char *s) - извежда съобщение на стандартния изход за грешки
+
+#include <errno.h>
+int errno - външна променлива съдържаща кода на последната възникнала грешка
+
+Системни функции за работа с файлове
+#include <unistd.h>
+#include <sys/types.h>
+int truncate(const char *path, off_t length) - скъсява файл до определена дължина
+int ftruncate(int fd, off_t length) - скъсява файл до определена дължина
+
+#include <unistd.h>
+int dup(int oldfd) - дублира файлов дескриптор на първото свободно място
+int dup2(int oldfd, int newfd) - дублира файлов дескриптор с посочения
+
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+int stat(const char *path, struct stat *buf) - връща информация за файл
+int fstat(int filedes, struct stat *buf) - връща информация за файл
+int lstat(const char *path, struct stat *buf) - връща информация за файл (вкл. символна връзка)
+
+Структура stat
+struct stat {
+  dev_t		st_dev;		- ID of device containing file
+  ino_t		st_ino;		- inode number
+  mode_t		st_mode;		- тип и права на достъп
+  nlink_t	st_nlink;		- брой твърди връзки
+  uid_t		st_uid;		- идентификатор на собственика
+  gid_t		st_gid;		- идентификатор на групата на собственика
+  dev_t		st_rdev;		- device ID (if special file)
+  off_t		st_size;		- размер в байтове
+  blksize_t	st_blksize;	- "препоръчителен" размер на блок при В/И операции
+  blkcnt_t	st_blocks;	- брой алокирани блокове (512 байта)
+  time_t		st_atime;		- време на последен достъп
+  time_t		st_mtime;		- време на последна модификация
+  time_t		st_ctime;		- време на последна промяна на атрибутите
+};
+Макроси за тип на файла (POSIX)
+S_ISREG()	- обикновен файл
+S_ISDIR()	- директория
+S_ISCHR()	- символен специален
+S_ISBLK()	- блоков специален
+S_ISFIFO()	- програмен канал
+S_ISLNK()	- символна връзка
+S_ISSOCK()	- сокет
+Флагове за тип на файла
+S_IFREG		0100000	- обикновен файл
+S_IFDIR		0040000	- директория
+S_IFCHR		0020000	- символен специален
+S_IFBLK		0060000	- блоков специален
+S_IFIFO		0010000	- програмен канал
+S_IFLNK		0120000	- символна връзка
+S_IFSOCK	0140000	- сокет
+S_IFMT		0170000	- маска за типа на файла
+Права на достъп
+S_IRUSR		00400	- четене за собственика
+S_IWUSR		00200	- писане за собственика
+S_IXUSR		00100	- изпълнение за собственика
+S_IRWXU		00700	- четене, писане и изпълнение за собственика
+S_IRGRP		00040	- четене за групата
+S_IWGRP		00020	- писане за групата
+S_IXGRP		00010	- изпълнение за групата
+S_IRWXG		00070	- четене, писане и изпълнение за групата
+S_IROTH		00004	- четене за другите
+S_IWOTH		00002	- писане за другите
+S_IXOTH		00001	- изпълнение за другите
+S_IRWXO		00007	- четене, писане и изпълнение за другите
