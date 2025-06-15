@@ -1,3 +1,0 @@
-Конвейер (канал)
-#include <unistd.h>
-int pipe(int filedes[2]) - създава конвейер (канал)
