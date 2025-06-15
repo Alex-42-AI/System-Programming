@@ -1,0 +1,32 @@
+Системни функции за права на достъп
+#include <sys/types.h>
+#include <sys/stat.h>
+mode_t umask(mode_t mask) - задава маска за създаване на файл
+int chmod(const char *path, mode_t mode) - променя правата на достъп
+int fchmod(int fd, mode_t mode) - променя правата на достъп
+
+Системни функции за времена на файл
+#include <sys/types.h>
+#include <utime.h>
+int utime(const char *filename, const struct utimbuf *buf) - променя времената на достъп и модификация на файл
+
+Структура utimbuf
+struct utimbuf {
+  time_t		actime;		- време на последен достъп
+  time_t		modtime;		- време на последна модификация
+};
+Системни функции за връзки
+#include <unistd.h>
+int link(const char *oldpath, const char *newpath) - създава твърда връзка към файл
+int unlink(const char *pathname) - изтрива име от файловата система
+int symlink(const char *oldpath, const char *newpath) - създава символна връзка към файл
+int readlink(const char *path, char *buf, size_t bufsiz) - чете съдържанието на символна връзка
+Системни функции за директории
+#include <sys/stat.h>
+#include <sys/types.h>
+int mkdir(const char *pathname, mode_t mode) - създава директория
+int rmdir(const char *pathname) - изтрива директория
+
+#include <unistd.h>
+int chdir(const char *path) - сменя текущата директория
+int fchdir(int fd) - сменя текущата директория
