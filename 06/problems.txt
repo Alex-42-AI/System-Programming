@@ -1,8 +1,8 @@
-Да се напише програма на C, която създава канал, затваря дескриптора за писане и чете от него. Какъв е резултата? А ако не затвори дескриптора за писане?
-Да се напише програма на C, която създава канал, затваря дескриптора за четене и пише в него. Какъв е резултата?
-Да се напише програма на C, която създава канал, пише текст в него, след това чете от него и извежда прочетеното на стандартния изход.
-Да се напише програма на C, която създава канал и след това поражда процес. Родителя пише в канала, през 1 секунда, аргументите от командния ред, след което изчаква наследника да завърши. Детето чете от канала и извежда прочетеното на стандартния изход.
-Да се напише програма на C, която реализира конвейер от 2 команди, подадени като аргументи в командния ред, чрез родител и наследник.
-Да се напише програма на C, която реализира конвейер от 2 команди, подадени като аргументи в командния ред, чрез два наследника.
-Да се напише програма на C, която реализира конвейер от 2 команди, подадени като аргументи в командния ред, чрез дете и внук.
-Да се напише програма на C, която реализира конвейер от 3 команди, подадени като аргументи в командния ред.
+Write a C program, that creates a pipe, closes the write descriptor and reads from it. What's the result?
+Write a C program, that creates a pipe, closes the read descriptor and writes in it. What's the result?
+Write a C program, that creates a pipe, writes text in it, then reads from it and outputs what was read on the standard output.
+Write a C program, that creates a pipe and then creates a process. The parent writes in the pipe, every other second, the arguments from the command line and then waits for the descendant to finish. The descendant reads from the pipe and outputs what was read ou the standard output.
+Write a C program, that implements a conveyer with 2 commands, passed as arguments in the command line, via a parent and a descendant.
+Write a C program, that implements a conveyer with 2 commands, passed as arguments in the command line via 2 descendants.
+Write a C program, that implements a conveyer with 2 commands, passed as arguments in the command line via a child and a grandchild.
+Write a C program, that implements a conveyer with 3 commands, passed as arguments in the command line.
