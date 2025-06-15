@@ -1,3 +1,3 @@
-Да се напише програма на C, която създава семафор, прочита стойността му, извежда я на екрана и унищожава семафора.
-Да се напише програма на C, която синхронизира 2 родствени процеса чрез семафор. Двата процеса работят едновременно и трябва да изведат текст на стандартния изход в определен ред. Единия чака няколко секунди и пише. Другия пише след него.
-*Да се напише програма на C, която синхронизира 2 процеса чрез семафор. Всеки от процесите отваря файл без флага O_APPEND и неколкократно добавя текст по следния начин - позиционира се в края, изчаква няколко секунди и пише.
+Write a C program, that creates a semaphore, reads its value, prints it out and destroys the semaphore.
+Write a C program, that synchronizes 2 related processes via a semaphore. Both processes work simoltaneously and should print out text on the standard output in a particular order. 1 waits a few seconds and writes. The other one writes after it.
+*Write a C program, that synchronizes 2 processes via a semaphore. Each process opens a file without the O_APPEND flag and adds text to it several times the following way - it positions itself at the end, waits a few seconds and writes.
