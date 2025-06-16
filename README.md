@@ -1,4 +1,4 @@
-# SysProg
+# System Programming
 
 An operating system is a set of grograms, which coordinate the work of computer hardware and software. The system usually provides for the following functionalities:
 
