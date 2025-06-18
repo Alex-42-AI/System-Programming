@@ -15,8 +15,10 @@ int main(int argc, char *argv[]) {
         int r = read(fd, buf, 1);
         if (!r || r == -1)
             break;
-        i++;
         char s = buf[0];
+        if (s != '\n')
+            line[i] = s;
+        i++;
         if (s == '\n' || i == 80) {
             if (!strstr(line, text)) {
                 close(fd);
@@ -25,8 +27,6 @@ int main(int argc, char *argv[]) {
             i = 0;
             char line[80];
         }
-        else
-            line[i] = s;
     }
     close(fd);
     return 1;
