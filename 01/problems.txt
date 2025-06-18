@@ -4,8 +4,8 @@ Write a C program, that implements command cmp -s file1 file2
 Write a C program, that implements command wc file
 Write a C program, that implements command tail file
 Write a C program, that implements command cut -cm-n file
-Write a C program, that implements command fgrep text file (file lines are up to 80 symbols)
 Write a C program, that implements command cat (without parameters)
 Write a C program, that implements command cat >> file
 Write a C program, that implements command tee file1 ... fileN
 Write a C program, that implements command wc file1 ... fileN
+Write a C program, that implements command fgrep text file (file lines are up to 80 symbols)
