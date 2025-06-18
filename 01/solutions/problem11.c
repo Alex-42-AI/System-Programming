@@ -1,4 +1,5 @@
 #include<fcntl.h>
+#include<unistd.h>
 #include<string.h>
 int main(int argc, char *argv[]) {
     if (argc < 3)
@@ -24,9 +25,8 @@ int main(int argc, char *argv[]) {
             i = 0;
             char line[80];
         }
-        else {
+        else
             line[i] = s;
-        }
     }
     close(fd);
     return 1;
