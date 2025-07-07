@@ -1,4 +1,4 @@
 Write a C program, that outputs the pid of the given process and its parent process, after which it changes its image with the ps command.
 Write a C program, that the number of the given process and starts a descendant process. Both processes output the result of fork and their pid. The descendant process also outputs its parent pid. The parent waits for the descendant to finish and outputs its status.
 Write a C program, that receives the name of an executable file in the command line. Executes it and outputs its exit code.
-Write a C program, that receives the names of 2 commands in the command line. Executes them simoltaneously. When they finish, it outputs their names and exit codes, in the order they finish.
+Write a C program, that receives the names of 2 commands in the command line. Executes them simultaneously. When they finish, it outputs their names and exit codes, in the order they finish.
