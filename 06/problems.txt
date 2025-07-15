@@ -1,7 +1,7 @@
 Write a C program, that creates a pipe, closes the write descriptor and reads from it. What's the result?
 Write a C program, that creates a pipe, closes the read descriptor and writes in it. What's the result?
 Write a C program, that creates a pipe, writes text in it, then reads from it and outputs what was read on the standard output.
-Write a C program, that creates a pipe and then creates a process. The parent writes in the pipe, every other second, the arguments from the command line and then waits for the descendant to finish. The descendant reads from the pipe and outputs what was read ou the standard output.
+Write a C program, that creates a pipe and then creates a process. The parent writes in the pipe, every other second, the arguments from the command line and then waits for the descendant to finish. The descendant reads from the pipe and outputs what was read on the standard output.
 Write a C program, that implements a conveyer with 2 commands, passed as arguments in the command line, via a parent and a descendant.
 Write a C program, that implements a conveyer with 2 commands, passed as arguments in the command line via 2 descendants.
 Write a C program, that implements a conveyer with 2 commands, passed as arguments in the command line via a child and a grandchild.
