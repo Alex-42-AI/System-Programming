@@ -1,2 +1,2 @@
-Write a C program, that receives an unlimited number of parameters - command names. It implements the conveyor command1 | command2 | ... commandn.
+Write a C program, that receives an unlimited number of parameters - command names. It implements the conveyor command1 | command2 | ... commandN.
 Write a C program, that receives an unlimited number of parameters. The first and last ones are file names and the rest - command names. It implements the construction command1 <file1 | command2 | ... commandN >file2.
