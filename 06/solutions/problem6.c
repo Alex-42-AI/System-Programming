@@ -5,10 +5,8 @@
 #include<sys/wait.h>
 #include<sys/types.h>
 int main(int argc, char *argv[]) {
-    if (argc < 3) {
-        printf("Wrong");
-        exit(1);
-    }
+    if (argc < 3)
+        return 1;
     int arr[2];
     int f0, f1;
     if (pipe(arr) == -1)
@@ -44,10 +42,10 @@ int main(int argc, char *argv[]) {
         return 1;
     }
     else {
+        close(arr[0]), close(arr[1]);
         int status;
         waitpid(f0, &status, 0);
         waitpid(f1, &status, 0);
-        close(arr[0]), close(arr[1]);
     }
     return 0;
 }
