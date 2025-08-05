@@ -1,13 +1,12 @@
-#include<stdio.h>
+#include<sys/wait.h>
 #include<sys/types.h>
 #include<fcntl.h>
 #include<unistd.h>
-#include<stdlib.h>
 #include<mqueue.h>
 int main(int argc, char *argv[]) {
     if (argc < 2)
         return 1;
-    struct mq_attr mq;
+    struct mq_attr mq = {.mq_maxmsg = 1, .mq_msgsize = 10};
     int q = mq_open("/unique_name", O_CREAT | O_EXCL | O_RDWR, 0644, &mq);
     if (q == -1)
         return 1;
@@ -41,4 +40,5 @@ int main(int argc, char *argv[]) {
     mq_close(q);
     mq_unlink("/unique_name");
     return 0;
+
 }
