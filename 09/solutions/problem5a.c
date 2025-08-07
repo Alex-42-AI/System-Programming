@@ -1,8 +1,6 @@
 #include<mqueue.h>
 #include<unistd.h>
 #include<fcntl.h>
-#include<sys/types.h>
-#include<sys/stat.h>
 #include"problem5.h"
 int main(int argc, char *argv[]) {
     if (argc < 2)
@@ -21,8 +19,9 @@ int main(int argc, char *argv[]) {
         int r = read(fd, buf, 1);
         if (!r || r == -1)
             break;
-        mq_send(q, buf, 1, NULL);
+        mq_send(q, buf, 1, (unsigned)1);
     }
+    mq_send(q, "\0", 1, (unsigned)1);
     close(fd);
     mq_close(q);
     return 0;
