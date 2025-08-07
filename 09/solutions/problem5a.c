@@ -21,8 +21,8 @@ int main(int argc, char *argv[]) {
             break;
         mq_send(q, buf, 1, (unsigned)1);
     }
-    mq_send(q, "\0", 1, (unsigned)1);
     close(fd);
     mq_close(q);
     return 0;
 }
+
