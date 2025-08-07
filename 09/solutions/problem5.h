@@ -1,4 +1,5 @@
 #ifndef EXERCISES_PROBLEM5_H
 #define EXERCISES_PROBLEM5_H
-#define Q_NAME "/unique_name"
+#define Q_NAME "/prob5"
 #endif //EXERCISES_PROBLEM5_H
+
