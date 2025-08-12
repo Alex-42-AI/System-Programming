@@ -4,12 +4,19 @@
 #include<stdio.h>
 #include<unistd.h>
 int main() {
-    int open_val = shm_open("/prob2", O_RDWR, 0777);
-    if (open_val == -1)
+    int md = shm_open("/prob2", O_RDWR, 0);
+    if (md == -1) {
+        shm_unlink("/prob2");
         return 1;
-    char *res = mmap(NULL, 8, PROT_READ | PROT_WRITE, MAP_SHARED, open_val, 0);
-    printf("%s\n", res);
-    close(open_val);
+    }
+    char *addr = mmap(NULL, 8, PROT_READ | PROT_WRITE, MAP_SHARED, md, 0);
+    if (addr == MAP_FAILURE) {
+        close(md);
+        shm_unlink("/prob2");
+        return 1;
+    }
+    printf("%s\n", addr);
+    close(md);
     shm_unlink("/prob2");
-    return 0;
+    return munmap(addr, 8) == -1;
 }
