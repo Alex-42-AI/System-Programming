@@ -6,11 +6,20 @@
 #include<unistd.h>
 #include<string.h>
 int main() {
-    int md = shm_open("/prob3", O_CREAT | O_EXCL | O_RDWR, 0777);
+    int md = shm_open("/prob3", O_CREAT | O_EXCL | O_RDWR, 0644);
     if (md == -1)
         return 1;
-    ftruncate(md, sizeof(int));
+    if (ftruncate(md, sizeof(int)) == -1) {
+        close(md);
+        shm_unlink("/prob3");
+        return 1;
+    }
     int *addr = mmap(NULL, sizeof(int), PROT_READ | PROT_WRITE, MAP_SHARED, md, 0);
+    if (addr == MAP_FAILURE) {
+        close(md);
+        shm_unlink("/prob3");
+        return 1;
+    }
     *addr = 0;
     int f = fork();
     if (f == -1) {
@@ -35,5 +44,5 @@ int main() {
     }
     close(md);
     shm_unlink("/prob3");
-    return 0;
+    return munmap(addr, sizeof(int)) == -1;
 }
