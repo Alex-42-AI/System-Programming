@@ -10,14 +10,14 @@ int main() {
         return 1;
     ftruncate(md, 11);
     char *addr0 = mmap(NULL, 11, PROT_WRITE, MAP_PRIVATE, md, 0);
-    if (addr0 == MAP_FAILURE) {
+    if (addr0 == MAP_FAILED) {
         close(md);
         shm_unlink("/prob1");
         return 1;
     }
     strcpy(addr0, "hello there");
     char *addr1 = mmap(NULL, 11, PROT_WRITE, MAP_PRIVATE, md, 0);
-    if (addr1 == MAP_FAILURE) {
+    if (addr1 == MAP_FAILED) {
         close(md);
         shm_unlink("/prob1");
         return 1;
@@ -32,3 +32,4 @@ int main() {
     shm_unlink("/prob1");
     return munmap(addr1, 11) == -1;
 }
+
