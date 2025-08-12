@@ -5,12 +5,26 @@
 #include<stdio.h>
 #include<unistd.h>
 #include<string.h>
-void swap(int array[], int a, int b) {
-    if (array[a] > array[b]) {
-        array[a] += array[b];
-        array[b] = array[a] - array[b];
-        array[a] -= array[b];
+void swap(int arr[], int i, int j) {
+    if (arr[i] > arr[j]) {
+        arr[i] += arr[j];
+        arr[j] = arr[i] - arr[j];
+        arr[i] -= arr[j];
     }
+}
+void sort(int arr[]) {
+    int i, j;
+    for (i = 0; i < 19; i++) {
+        for (j = i + 1; j < 20; j++)
+            swap(arr, i, j);
+        sleep(1);
+    }
+}
+void print(int arr[]) {
+    int i;
+    for (i = 0; i < 20; i++)
+        printf("%d ", arr[i]);
+    printf("\n");
 }
 int main() {
     int md = shm_open("/prob4", O_CREAT | O_EXCL | O_RDWR, 0777);
@@ -31,25 +45,18 @@ int main() {
     if (f) {
         sleep(1);
         while (!waitpid(f, NULL, WNOHANG)) {
-            int i;
-            for (i = 0; i < 20; i++) {
-                printf("%d ", addr[i]);
-                printf("\n");
-            }
-        }
-    }
-    
-    else {
-        int i, j;
-        for (i = 0; i < 20; i++)
-            addr[i] = random() % 100;
-        for (i = 0; i < 20; i++) {
-            for (j = i + 1; j < 20; j++)
-                swap(addr, i, j);
+            print(addr);
             sleep(1);
         }
     }
+
+    else {
+        int i;
+        for (i = 0; i < 20; i++)
+            addr[i] = rand() % 100;
+        sort(addr);
+    }
     close(md);
     shm_unlink("/prob4");
-    return 0;
+    return munmap(addr, sizeof(int[20])) == -1;
 }
