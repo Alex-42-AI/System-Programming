@@ -10,7 +10,7 @@ int main() {
         return 1;
     }
     char *addr = mmap(NULL, 8, PROT_READ | PROT_WRITE, MAP_SHARED, md, 0);
-    if (addr == MAP_FAILURE) {
+    if (addr == MAP_FAILED) {
         close(md);
         shm_unlink("/prob2");
         return 1;
@@ -20,3 +20,4 @@ int main() {
     shm_unlink("/prob2");
     return munmap(addr, 8) == -1;
 }
+
