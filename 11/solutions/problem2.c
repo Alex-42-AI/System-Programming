@@ -5,7 +5,7 @@
 #include<sys/stat.h>
 int main() {
     sem_t *s = sem_open("/prob2", O_CREAT | O_EXCL, 0644, 1);
-    if (!s)
+    if (s == SEM_FAILED)
         return 1;
     int f = fork();
     if (f == -1) {
@@ -26,4 +26,5 @@ int main() {
     sem_close(s);
     sem_unlink("/prob2");
     return 0;
+
 }
