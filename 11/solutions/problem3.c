@@ -9,7 +9,7 @@ int main(int argc, char *argv[]) {
     if (fd == -1)
         return 1;
     sem_t *s = sem_open("/prob4", O_CREAT | O_EXCL, 0644, 1);
-    if (!s) {
+    if (s == SEM_FAILED) {
         close(fd);
         return 1;
     }
@@ -42,4 +42,5 @@ int main(int argc, char *argv[]) {
     sem_close(s);
     sem_unlink("/prob4");
     return 0;
+
 }
