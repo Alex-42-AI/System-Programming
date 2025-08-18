@@ -140,9 +140,8 @@ int main(int argc, char *argv[]) {
     }
     sem_close(s), sem_close(t);
     if (f0 && f1) {
-        munmap(addr, sizeof(int));
         sem_unlink("/rw_mutex");
         sem_unlink("/mutex");
     }
-    return 0;
+    return munmap(addr, sizeof(int)) == -1;
 }
