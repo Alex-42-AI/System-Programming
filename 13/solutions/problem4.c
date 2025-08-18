@@ -138,8 +138,9 @@ int main(int argc, char *argv[]) {
         }
         close(fd);
     }
-    sem_close(s), sem_close(t);
+    close(md), sem_close(s), sem_close(t);
     if (f0 && f1) {
+        shm_unlink("/prob4");
         sem_unlink("/rw_mutex");
         sem_unlink("/mutex");
     }
