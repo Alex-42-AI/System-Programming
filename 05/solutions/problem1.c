@@ -9,7 +9,7 @@ int main(int argc, char *argv[]) {
     if (f == -1)
         return 1;
     if (f) {
-        int i, fd = open(argv[1], O_CREAT | O_WRONLY);
+        int i, fd = open(argv[1], O_CREAT | O_WRONLY, 0644);
         if (fd == -1)
             return 1;
         char *bufs[4] = {"012", "23", "345", "56"};
@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
         close(fd);
     }
     else {
-        int i, fd = open(argv[1], O_CREAT | O_WRONLY);
+        int i, fd = open(argv[1], O_CREAT | O_WRONLY, 0644);
         if (fd == -1)
             return 1;
         char *bufs[5] = {"abc", "cd", "def", "fg", "ghi"};
@@ -28,3 +28,4 @@ int main(int argc, char *argv[]) {
     }
     return 0;
 }
+
