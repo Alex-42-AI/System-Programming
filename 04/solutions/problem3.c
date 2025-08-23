@@ -6,6 +6,8 @@ int main(int argc, char *argv[]) {
     if (argc < 2)
         return 1;
     int f = fork();
+    if (f == -1)
+        return 1;
     if (f) {
         int status;
         int w = wait(&status);
@@ -17,5 +19,5 @@ int main(int argc, char *argv[]) {
         return 1;
     }
     return 0;
-
 }
+
