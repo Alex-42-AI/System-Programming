@@ -1,5 +1,4 @@
 #include<unistd.h>
-#include<stdlib.h>
 #include<sys/stat.h>
 #include<sys/wait.h>
 int main(int argc, char *argv[]) {
