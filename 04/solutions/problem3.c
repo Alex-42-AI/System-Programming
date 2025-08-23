@@ -13,11 +13,8 @@ int main(int argc, char *argv[]) {
         int w = wait(&status);
         if (WIFEXITED(status))
             printf("%d\n", WEXITSTATUS(status));
+        return 0;
     }
-    else {
-        execlp(argv[1], argv[1], NULL);
-        return 1;
-    }
-    return 0;
+    execlp(argv[1], argv[1], NULL);
+    return 1;
 }
-
