@@ -1,6 +1,5 @@
 #include<fcntl.h>
 #include<unistd.h>
-#include<stdlib.h>
 #include<stdio.h>
 #include<sys/wait.h>
 int main(int argc, char *argv[]) {
@@ -15,7 +14,7 @@ int main(int argc, char *argv[]) {
     if (f == -1)
         return 1;
     if (!f) {
-        int fd0 = open(file0, O_CREAT | O_RDONLY, 0644);
+        int fd0 = open(file0, O_RDONLY);
         if (fd0 == -1)
             return 1;
         int fd1 = open(file1, O_CREAT | O_WRONLY | O_TRUNC, 0644);
@@ -23,10 +22,18 @@ int main(int argc, char *argv[]) {
             close(fd0);
             return 1;
         }
-        dup2(fd0, 0);
-        dup2(fd1, 1);
+        if (dup2(fd0, 0) == -1) {
+            close(fd0), close(fd1);
+            return 1;
+        }
+        close(fd0);
+        if (dup2(fd1, 1) == -1) {
+            close(fd1);
+            return 1;
+        }
+        close(fd1);
         execvp(argv[0], argv);
-        close(fd0), close(fd1);
+        return 1;
     }
     else {
         int status;
