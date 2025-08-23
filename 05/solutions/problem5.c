@@ -10,8 +10,10 @@ int main(int argc, char *argv[]) {
     if (fd0 == -1)
         return 1;
     int fd1 = open(argv[2], O_CREAT | O_APPEND, 0644);
-    if (fd1 == -1)
+    if (fd1 == -1) {
+        close(fd0);
         return 1;
+    }
     int f = fork();
     if (f == -1) {
         close(fd0), close(fd1);
@@ -38,4 +40,3 @@ int main(int argc, char *argv[]) {
     close(fd0), close(fd1);
     return 0;
 }
-
