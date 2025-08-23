@@ -4,5 +4,5 @@
 int main() {
 	printf("%d %d\n", getpid(), getppid());
 	execlp("ps", "ps", NULL);
-	return 0;
+	return 1;
 }
