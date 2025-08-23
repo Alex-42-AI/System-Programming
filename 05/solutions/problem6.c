@@ -1,5 +1,4 @@
 #include<unistd.h>
-#include<stdlib.h>
 #include<stdio.h>
 #include<sys/wait.h>
 int main(int argc, char *argv[]) {
@@ -12,8 +11,10 @@ int main(int argc, char *argv[]) {
     int f = fork();
     if (f == -1)
         return 1;
-    if (!f)
+    if (!f) {
         execvp(argv[0], argv);
+        return 1;
+    }
     else {
         int status;
         int w = wait(&status);
@@ -21,3 +22,4 @@ int main(int argc, char *argv[]) {
     }
     return 0;
 }
+
