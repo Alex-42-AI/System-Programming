@@ -1,15 +1,14 @@
 #include<fcntl.h>
 #include<unistd.h>
-#include<stdlib.h>
 #include<sys/stat.h>
 #include<sys/types.h>
 int main(int argc, char *argv[]) {
     if (argc < 2)
         return 1;
-    int fd0 = open(argv[1], O_CREAT | O_RDONLY);
+    int fd0 = open(argv[1], O_RDONLY);
     if (fd0 == -1)
         return 1;
-    int fd1 = open(argv[2], O_CREAT | O_WRONLY);
+    int fd1 = open(argv[2], O_CREAT | O_WRONLY, 0644);
     if (fd1 == -1) {
         close(fd0);
         return 1;
