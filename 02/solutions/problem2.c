@@ -1,8 +1,8 @@
-#include<stdlib.h>
 #include<fcntl.h>
+#include<unistd.h>
 int main(int argc, char *argv[]) {
     if (argc < 2)
-        exit(1);
+        return 1;
     int fd0 = open(argv[1], O_WRONLY);
     if (fd0 == -1)
         return 1;
@@ -11,4 +11,5 @@ int main(int argc, char *argv[]) {
     write(1, "test\n", 5);
     close(fd0), close(fd1);
     return 0;
+
 }
