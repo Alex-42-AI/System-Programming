@@ -5,7 +5,7 @@ int main() {
     int q = mq_open("/prob2", O_RDWR | O_CREAT | O_EXCL, 0644, &mq);
     if (q == -1)
         return 1;
-    if (mq_send(q, "problem 2", 9, (unsigned)1) == -1) {
+    if (mq_send(q, "problem 2", 9, 0) == -1) {
         mq_close(q);
         mq_unlink("/prob2");
         return 1;
@@ -23,3 +23,4 @@ int main() {
     mq_unlink("/prob2");
     return 0;
 }
+
