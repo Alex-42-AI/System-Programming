@@ -4,10 +4,8 @@ int main(int argc, char *argv[]) {
     if (pipe(arr) == -1)
         return 1;
     close(arr[0]);
-    char *buf = "test\n";
-    int w = write(arr[1], buf, 5);
+    int w = write(arr[1], "test\n", 5);
     write(1, buf, w);
     close(arr[1]);
     return 0;
 }
-
