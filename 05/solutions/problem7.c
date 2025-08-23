@@ -10,7 +10,6 @@ int main(int argc, char *argv[]) {
     int i;
     for (i = 0; i < argc - 2; i++)
         argv[i] = argv[i + 1];
-    argv[argc - 2] = NULL;
     int f = fork();
     if (f == -1)
         return 1;
@@ -33,3 +32,4 @@ int main(int argc, char *argv[]) {
     }
     return 0;
 }
+
