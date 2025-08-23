@@ -6,7 +6,7 @@ int main(int argc, char *argv[]) {
     if (argc < 2)
         return 1;
     struct mq_attr mq = {.mq_maxmsg = 10, .mq_msgsize = 1};
-    int q = mq_open(Q_NAME, O_RDONLY, &mq);
+    int q = mq_open(Q_NAME, O_RDONLY, 0, &mq);
     if (q == -1)
         return 1;
     while (1) {
@@ -22,3 +22,4 @@ int main(int argc, char *argv[]) {
     mq_unlink(Q_NAME);
     return 0;
 }
+
