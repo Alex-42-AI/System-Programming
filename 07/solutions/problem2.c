@@ -1,5 +1,4 @@
 #include<unistd.h>
-#include<stdlib.h>
 #include<fcntl.h>
 #include<sys/stat.h>
 #include<sys/wait.h>
@@ -9,7 +8,7 @@ int main(int argc, char *argv[]) {
   	int fd0 = open(argv[1], O_RDONLY);
   	if (fd0 == -1)
   		  return 1;
-  	int fd1 = open(argv[argc - 1], O_WRONLY | O_CREAT | O_TRUNC, 0666);
+  	int fd1 = open(argv[argc - 1], O_WRONLY | O_CREAT | O_TRUNC, 0644);
   	if (fd1 == -1) {
     		close(fd0);
     		return 1;
