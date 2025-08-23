@@ -15,5 +15,4 @@ int main() {
     else
         printf("ppid = %d\n", getppid());
     return 0;
-
 }
