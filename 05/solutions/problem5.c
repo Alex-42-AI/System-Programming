@@ -1,16 +1,15 @@
 #include<fcntl.h>
 #include<unistd.h>
-#include<stdlib.h>
 #include<sys/wait.h>
 #include<sys/stat.h>
 #include<sys/types.h>
 int main(int argc, char *argv[]) {
     if (argc < 2)
         return 1;
-    int fd0 = open(argv[1], O_CREAT | O_RDONLY);
+    int fd0 = open(argv[1], O_RDONLY);
     if (fd0 == -1)
         return 1;
-    int fd1 = open(argv[2], O_CREAT | O_APPEND);
+    int fd1 = open(argv[2], O_CREAT | O_APPEND, 0644);
     if (fd1 == -1)
         return 1;
     int f = fork();
@@ -19,9 +18,8 @@ int main(int argc, char *argv[]) {
         return 1;
     }
     if (f) {
-        int status;
         while (1) {
-            int w = waitpid(f, &status, WNOHANG);
+            int w = waitpid(f, NULL, WNOHANG);
             if (w)
                 break;
             write(fd1, "parent\n", 7);
