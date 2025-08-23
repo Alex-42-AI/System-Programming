@@ -38,37 +38,37 @@ int main(int argc, char *argv[]) {
 	if (f0 == -1) {
 		munmap(addr, sizeof(int));
 		close(md);
-                shm_unlink("/prob4");
-                sem_close(s);
-                sem_unlink("/rw_mutex");
-                sem_close(t);
-                sem_unlink("/mutex");
-                return 1;
+		shm_unlink("/prob4");
+		sem_close(s);
+		sem_unlink("/rw_mutex");
+		sem_close(t);
+		sem_unlink("/mutex");
+		return 1;
 	}
 	if (f0) {
 		int i, j;
 		f1 = fork();
 		if (f1 == -1) {
 			munmap(addr, sizeof(int));
-                	close(md);
-	                shm_unlink("/prob4");
-        	        sem_close(s);
-                	sem_unlink("/rw_mutex");
-	                sem_close(t);
-        	        sem_unlink("/mutex");
-                	return 1;
+			close(md);
+			shm_unlink("/prob4");
+			sem_close(s);
+			sem_unlink("/rw_mutex");
+			sem_close(t);
+			sem_unlink("/mutex");
+			return 1;
 		}
 		if (f1) {
 			int fd = open(argv[1], O_CREAT | O_WRONLY | O_TRUNC, 0644);
 			if (fd == -1) {
 				munmap(addr, sizeof(int));
-		                close(md);
-        		        shm_unlink("/prob4");
-                		sem_close(s);
-	                	sem_unlink("/rw_mutex");
-	        	        sem_close(t);
-        	        	sem_unlink("/mutex");
-	        	        return 1;
+				close(md);
+				shm_unlink("/prob4");
+				sem_close(s);
+				sem_unlink("/rw_mutex");
+				sem_close(t);
+				sem_unlink("/mutex");
+				return 1;
 			}
 			for (i = 0; i < 5; i++) {
 				sem_wait(s);
@@ -79,44 +79,44 @@ int main(int argc, char *argv[]) {
 		}
 		else {
 			int fd = open(argv[1], O_RDONLY);
-                        if (fd == -1) {
-                                munmap(addr, sizeof(int));
-                                close(md);
-                                shm_unlink("/prob4");
-                                sem_close(s);
-                                sem_unlink("/rw_mutex");
-                                sem_close(t);
-                                sem_unlink("/mutex");
-                                return 1;
-                        }
+			if (fd == -1) {
+				munmap(addr, sizeof(int));
+				close(md);
+				shm_unlink("/prob4");
+				sem_close(s);
+				sem_unlink("/rw_mutex");
+				sem_close(t);
+				sem_unlink("/mutex");
+				return 1;
+			}
 			for (j = 0; j < 3; j++) {
 				sem_wait(t);
-	                        if (++(*addr) == 1)
-        	                        sem_wait(s);
-                	        sem_post(t);
-                        	char buf[10];
-	                        if (read(fd, buf, 10) > 0)
-        	                        printf("%s", buf);
-                	        sem_wait(t);
-                        	if (!(--(*addr)))
-                                	sem_post(s);
-	                        sem_post(t);
+				if (++(*addr) == 1)
+					sem_wait(s);
+				sem_post(t);
+				char buf[10];
+				if (read(fd, buf, 10) > 0)
+					printf("%s", buf);
+				sem_wait(t);
+				if (!(--(*addr)))
+					sem_post(s);
+				sem_post(t);
 			}
 			close(fd);
 		}
 	}
 	else {
 		int k, fd = open(argv[1], O_RDONLY);
-                if (fd == -1) {
-                        munmap(addr, sizeof(int));
-                        close(md);
-                        shm_unlink("/prob4");
-                        sem_close(s);
-                        sem_unlink("/rw_mutex");
-                        sem_close(t);
-                        sem_unlink("/mutex");
-                        return 1;
-                }
+		if (fd == -1) {
+			munmap(addr, sizeof(int));
+			close(md);
+			shm_unlink("/prob4");
+			sem_close(s);
+			sem_unlink("/rw_mutex");
+			sem_close(t);
+			sem_unlink("/mutex");
+			return 1;
+		}
 		for (k = 0; k < 4; k++) {
 			sem_wait(t);
 			if (++(*addr) == 1)
