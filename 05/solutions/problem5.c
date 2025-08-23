@@ -19,8 +19,7 @@ int main(int argc, char *argv[]) {
     }
     if (f) {
         while (1) {
-            int w = waitpid(f, NULL, WNOHANG);
-            if (w)
+            if (waitpid(f, NULL, WNOHANG))
                 break;
             write(fd1, "parent\n", 7);
             sleep(2);
@@ -39,3 +38,4 @@ int main(int argc, char *argv[]) {
     close(fd0), close(fd1);
     return 0;
 }
+
