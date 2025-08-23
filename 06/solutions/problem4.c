@@ -31,4 +31,3 @@ int main(int argc, char* argv[]) {
     close(arr[0]), close(arr[1]);
     return 0;
 }
-
