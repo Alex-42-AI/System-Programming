@@ -9,7 +9,7 @@ int main(int argc, char *argv[]) {
     if (fd == -1)
         return 1;
     struct mq_attr mq = {.mq_maxmsg = 10, .mq_msgsize = 1};
-    int q = mq_open(Q_NAME, O_RDONLY, &mq);
+    int q = mq_open(Q_NAME, O_RDONLY, 0, &mq);
     if (q == -1) {
         close(fd);
         return 1;
