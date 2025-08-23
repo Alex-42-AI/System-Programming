@@ -11,9 +11,10 @@ int main() {
         int r = read(0, buf, 1);
         if (!r || r == -1)
             break;
-        mq_send(q, buf, 1, (unsigned)1);
+        mq_send(q, buf, 1, 0);
     }
-    mq_send(q, "\0", 1, (unsigned)1);
+    mq_send(q, "\0", 1, 0);
     mq_close(q);
     return 0;
 }
+
