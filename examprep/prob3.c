@@ -20,18 +20,28 @@ int main(int argc, char *argv[]) {
 		}
 		int fd2 = open(argv[argc - 1], O_CREAT | O_WRONLY | O_APPEND, 0644);
 		if (fd2 == -1) {
-			close(fd0);
-			close(fd1);
+			close(fd0), close(fd1);
 			return 1;
 		}
-		dup2(fd0, 0);
-		dup2(fd1, 1);
-		dup2(fd2, 2);
+		if (dup2(fd0, 0) == -1) {
+			close(fd0), close(fd1), close(fd2);
+			return 1;
+		}
+		close(fd0);
+		if (dup2(fd1, 1) == -1) {
+			close(fd1), close(fd2);
+			return 1;
+		}
+		close(fd1);
+		if (dup2(fd2, 2) == -1) {
+			close(fd2);
+			return 1;
+		}
+		close(fd2);
 		int i;
 		for (i = 0; i < argc - 3; i++)
 			argv[i] = argv[i + 1];
 		argv[argc - 3] = argv[argc - 2] = argv[argc - 1] = NULL;
-		close(fd0), close(fd1), close(fd2);
 		execvp(command, argv);
 		return 1;
 	}
