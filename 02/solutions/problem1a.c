@@ -3,9 +3,8 @@ int main(int argc, char *argv[]) {
     if (argc < 2)
         return 1;
     int fd0 = open(argv[1], O_RDONLY);
-    if (fd0 == -1) {
+    if (fd0 == -1)
         return 1;
-    }
     int fd1 = open(argv[1], O_RDONLY);
     if (fd1 == -1) {
         close(fd0);
