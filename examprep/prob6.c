@@ -24,9 +24,15 @@ int main(int argc, char *argv[]) {
 			return 1;
 		}
 		if (!f) {
-			dup2(fd, 0);
+			if (dup2(fd, 0) == -1) {
+				close(fd);
+				return 1;
+			}
 			close(fd), close(arr[0]);
-			dup2(arr[1], 1);
+			if (dup2(arr[1], 1) == -1) {
+				close(arr[1]);
+				return 1;
+			}
 			close(arr[1]);
 			execlp(argv[i], argv[i], NULL);
 			return 1;
@@ -40,9 +46,15 @@ int main(int argc, char *argv[]) {
 		return 1;
 	}
 	if (!f) {
-		dup2(fd, 0);
+		if (dup2(fd, 0) == -1) {
+			close(fd);
+			return 1;
+		}
 		close(fd);
-		dup2(fd1, 1);
+		if (dup2(fd1, 1) == -1) {
+			close(fd1);
+			return 1;
+		}
 		close(fd1);
 		execlp(argv[argc - 2], argv[argc - 2], NULL);
 		return 1;
