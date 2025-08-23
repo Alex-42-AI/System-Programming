@@ -12,9 +12,8 @@ int main() {
             printf("%d\n", WEXITSTATUS(status));
         printf("status = %d, wait result = %d\n", status, w);
     }
-    else {
+    else
         printf("ppid = %d\n", getppid());
-        exit(1);
-    }
     return 0;
+
 }
