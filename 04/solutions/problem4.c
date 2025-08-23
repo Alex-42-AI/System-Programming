@@ -7,8 +7,12 @@ int main(int argc, char *argv[]) {
     if (argc < 3)
         return 1;
     int f0 = fork();
+    if (f0 == -1)
+        return 1;
     if (f0) {
         int f1 = fork();
+        if (f1 == -1)
+            return 1;
         if (f1) {
             int status0, status1;
             int w0 = wait(&status0), w1 = wait(&status1);
@@ -27,3 +31,4 @@ int main(int argc, char *argv[]) {
     return 0;
 
 }
+
