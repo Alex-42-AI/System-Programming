@@ -13,7 +13,10 @@ int main(int argc, char *argv[]) {
 	}
 	if (!f0) {
 		close(arr0[0]);
-		dup2(arr0[1], 1);
+		if dup2(arr0[1], 1) == -1) {
+			close(arr0[1]);
+			return 1;
+		}
 		close(arr0[1]);
 		execlp(argv[3], argv[3], NULL);
 		return 1;
@@ -30,16 +33,24 @@ int main(int argc, char *argv[]) {
 	}
 	if (!f1) {
 		close(arr0[1]);
-		dup2(arr0[0], 0);
-		close(arr0[0]);
-		close(arr1[0]);
-		dup2(arr1[1], 1);
+		if (dup2(arr0[0], 0) == -1) {
+			close(arr0[0]);
+			return 1;
+		}
+		close(arr0[0]), close(arr1[0]);
+		if (dup2(arr1[1], 1) == -1) {
+			close(arr1[1]);
+			return 1;
+		}
 		close(arr1[1]);
 		execlp(argv[2], argv[2], NULL);
 		return 1;
 	}
 	close(arr1[1]);
-	dup2(arr1[0], 0);
+	if (dup2(arr1[0], 0) == -1) {
+		close(arr1[0]);
+		return 1;
+	}
 	close(arr1[0]);
 	execlp(argv[1], argv[1], NULL);
 	return 1;
