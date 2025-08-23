@@ -7,6 +7,7 @@ int main(int argc, char *argv[]) {
     write(1, buf0, w);
     int r = read(arr[0], buf1, 5);
     write(1, buf1, r);
-    close(arr[1]);
+    close(arr[0]), close(arr[1]);
     return 0;
+
 }
