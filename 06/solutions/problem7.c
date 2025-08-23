@@ -1,12 +1,9 @@
 #include<unistd.h>
 #include<stdio.h>
-#include<fcntl.h>
-#include<stdlib.h>
 #include<sys/types.h>
 int main(int argc, char *argv[]) {
-    if (argc < 3) {
+    if (argc < 3)
         return 1;
-    }
     int f0 = fork();
     if (f0 == -1)
         return 1;
