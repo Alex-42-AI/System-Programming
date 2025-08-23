@@ -18,8 +18,8 @@ int main(int argc, char *argv[]) {
 		for (i = 0; i < argc - 1; i++)
 			argv[i] = argv[i + 1];
 		argv[argc - 1] = NULL;
-		if (execvp(argv[1], argv) == -1)
-			return -1;
+		execvp(argv[1], argv);
+		return 1;
 	}
 	return 0;
 }
