@@ -7,7 +7,7 @@ void func(int sig_val) {
 		printf("child\n");
 }
 int main() {
-	signal(17, func);
+	signal(SIGCHLD, func);
 	int f = fork();
 	if (f == -1)
 		return 1;
