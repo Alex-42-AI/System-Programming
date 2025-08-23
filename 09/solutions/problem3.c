@@ -35,10 +35,11 @@ int main(int argc, char *argv[]) {
             int r = read(fd, buf, 1);
             if (!r || r == -1)
                 break;
-            mq_send(q, buf, 1, (unsigned)1);
+            mq_send(q, buf, 1, 0);
         }
-        mq_send(q, "\0", (unsigned)1);
+        mq_send(q, "\0", 0);
         close(fd);
     }
     return 0;
 }
+
