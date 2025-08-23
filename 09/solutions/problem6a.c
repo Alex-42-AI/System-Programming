@@ -17,4 +17,3 @@ int main() {
     mq_close(q);
     return 0;
 }
-
