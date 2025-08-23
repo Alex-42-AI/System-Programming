@@ -42,5 +42,4 @@ int main(int argc, char *argv[]) {
     sem_close(s);
     sem_unlink("/prob4");
     return 0;
-
 }
