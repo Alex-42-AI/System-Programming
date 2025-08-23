@@ -16,7 +16,7 @@ int main(int argc, char *argv[]) {
         return 1;
     }
     if (f) {
-        int fd = open(argv[1], O_WRONLY | O_TRUNC | O_CREAT);
+        int fd = open(argv[1], O_WRONLY | O_TRUNC | O_CREAT, 0644);
         if (fd == -1)
             return 1;
         while (1) {
@@ -37,9 +37,9 @@ int main(int argc, char *argv[]) {
             int r = read(0, buf, 1);
             if (!r || r == -1)
                 break;
-            mq_send(q, buf, 1, NULL);
+            mq_send(q, buf, 1, 0);
         }
-        mq_send(q, "\0", (unsigned)1);
+        mq_send(q, "\0", 0);
     }
     return 0;
 }
