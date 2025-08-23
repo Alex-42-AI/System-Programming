@@ -1,7 +1,5 @@
 #include<unistd.h>
 #include<stdio.h>
-#include<fcntl.h>
-#include<stdlib.h>
 #include<sys/wait.h>
 #include<sys/types.h>
 int main(int argc, char *argv[]) {
@@ -41,11 +39,8 @@ int main(int argc, char *argv[]) {
         execlp(argv[2], argv[2], NULL);
         return 1;
     }
-    else {
-        close(arr[0]), close(arr[1]);
-        int status;
-        waitpid(f0, &status, 0);
-        waitpid(f1, &status, 0);
-    }
+    waitpid(f0, NULL, 0);
+    waitpid(f1, NULL, 0);
+    close(arr[0]), close(arr[1]);
     return 0;
 }
