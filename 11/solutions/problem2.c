@@ -26,5 +26,4 @@ int main() {
     sem_close(s);
     sem_unlink("/prob2");
     return 0;
-
 }
