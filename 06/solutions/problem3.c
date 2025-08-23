@@ -9,5 +9,4 @@ int main(int argc, char *argv[]) {
     write(1, buf1, r);
     close(arr[0]), close(arr[1]);
     return 0;
-
 }
