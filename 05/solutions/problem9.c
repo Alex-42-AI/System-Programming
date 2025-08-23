@@ -15,7 +15,7 @@ int main(int argc, char *argv[]) {
     if (f == -1)
         return 1;
     if (!f) {
-        int fd0 = open(file0, O_CREAT | O_RDONLY, 0644);
+        int fd0 = open(file0, O_RDONLY);
         if (fd0 == -1)
             return 1;
         int fd1 = open(file1, O_CREAT | O_WRONLY | O_TRUNC, 0644);
@@ -28,11 +28,23 @@ int main(int argc, char *argv[]) {
             close(fd0), close(fd1);
             return 1;
         }
-        dup2(fd0, 0);
-        dup2(fd1, 1);
-        dup2(fd2, 2);
+        if (dup2(fd0, 0) == -1) {
+            close(fd0), close(fd1), close(fd2);
+            return 1;
+        }
+        close(fd0);
+        if (dup2(fd1, 1) == -1) {
+            close(fd1), close(fd2);
+            return 1;
+        }
+        close(fd1);
+        if (dup2(fd2, 2) == -1) {
+            close(fd2);
+            return 1;
+        }
+        close(fd2);
         execvp(argv[0], argv);
-        close(fd0), close(fd1), close(fd2);
+        return 1;
     }
     else {
         int status;
