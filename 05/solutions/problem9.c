@@ -45,11 +45,8 @@ int main(int argc, char *argv[]) {
         execvp(argv[0], argv);
         return 1;
     }
-    else {
-        int status;
-        int w = wait(&status);
-        printf("%d %d\n", w, status);
-    }
+    int status;
+    int w = wait(&status);
+    printf("%d %d\n", w, status);
     return 0;
 }
-
