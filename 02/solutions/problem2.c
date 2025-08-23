@@ -11,5 +11,4 @@ int main(int argc, char *argv[]) {
     write(1, "test\n", 5);
     close(fd0), close(fd1);
     return 0;
-
 }
