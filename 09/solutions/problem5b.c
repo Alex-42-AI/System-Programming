@@ -22,4 +22,3 @@ int main(int argc, char *argv[]) {
     mq_unlink(Q_NAME);
     return 0;
 }
-
