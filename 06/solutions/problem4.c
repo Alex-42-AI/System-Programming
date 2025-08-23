@@ -21,13 +21,14 @@ int main(int argc, char* argv[]) {
         }
     }
     else {
-        int i, status;
+        int i;
         for (i = 1; i < argc; i++) {
             write(arr[1], argv[i], sizeof(argv[i]));
             sleep(1);
         }
-        wait(&status);
+        wait(NULL);
     }
     close(arr[0]), close(arr[1]);
     return 0;
 }
+
