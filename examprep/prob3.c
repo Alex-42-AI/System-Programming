@@ -31,13 +31,12 @@ int main(int argc, char *argv[]) {
 		for (i = 0; i < argc - 3; i++)
 			argv[i] = argv[i + 1];
 		argv[argc - 3] = argv[argc - 2] = argv[argc - 1] = NULL;
-		execvp(command, argv);
 		close(fd0), close(fd1), close(fd2);
+		execvp(command, argv);
+		return 1;
 	}
-	else {
-		int status;
-		int w = waitpid(f, &status, 0);
-		printf("%d\n", status);
-	}
+	int status;
+	int w = waitpid(f, &status, 0);
+	printf("%d\n", status);
 	return 0;
 }
