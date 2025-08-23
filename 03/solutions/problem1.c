@@ -19,4 +19,3 @@ int main(int argc, char *argv[]) {
     close(fd0), close(fd1);
     return 0;
 }
-
