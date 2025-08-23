@@ -1,4 +1,3 @@
-#include<stdlib.h>
 #include<unistd.h>
 #include<sys/wait.h>
 #include<sys/types.h>
@@ -29,5 +28,6 @@ int main(int argc, char* argv[]) {
         }
         wait(&status);
     }
+    close(arr[0]), close(arr[1]);
     return 0;
 }
