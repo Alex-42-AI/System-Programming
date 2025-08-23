@@ -15,10 +15,15 @@ int main(int argc, char *argv[]) {
             printf("%s\n%d\n", w0 == f0 ? argv[1] : argv[2], w0);
             printf("%s\n%d\n", w1 == f1 ? argv[2] : argv[1], w1);
         }
-        else
+        else {
             execlp(argv[2], argv[2], NULL);
+            return 1;
+        }
     }
-    else
+    else {
         execlp(argv[1], argv[1], NULL);
+        return 1;
+    }
     return 0;
+
 }
