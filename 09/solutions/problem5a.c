@@ -25,5 +25,3 @@ int main(int argc, char *argv[]) {
     mq_close(q);
     return 0;
 }
-
-
